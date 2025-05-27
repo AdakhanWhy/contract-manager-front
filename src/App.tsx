@@ -1,25 +1,23 @@
-import { QueryClientProvider } from "@tanstack/react-query";
-import { MantineProvider } from "@mantine/core";
-import { queryClient } from "./queryClient";
-import { theme } from "./theme";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Contract } from "./components/Contract";
-import { ModalsProvider } from "@mantine/modals";
-import { modals } from "./components/modals/contextModals";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { LoginPage } from "./components/Login/LoginPage";
 
-function App() {
+export const App = () => {
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <MantineProvider theme={theme}>
-          <ModalsProvider modals={modals}>
-            <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<LoginPage />} />
+        <Route
+          path="/contracts"
+          element={
+            <ProtectedRoute>
               <Contract />
-            </div>
-          </ModalsProvider>
-        </MantineProvider>
-      </QueryClientProvider>
-    </>
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate to="/contracts" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};

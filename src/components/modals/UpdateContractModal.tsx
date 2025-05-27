@@ -1,34 +1,33 @@
-import { z } from "zod";
-import { useForm, zodResolver } from "@mantine/form";
 import { openContextModal, type ContextModalProps } from "@mantine/modals";
-import { useCreateContract } from "../../services/createContract";
+import { updateContractSchema, useUpdateContract, type UpdateContractForm } from "../../services/updateContract";
+import { useForm, zodResolver } from "@mantine/form";
 import { ActionIcon, Button, Select, TextInput } from "@mantine/core";
 import { useFetchContractTemplates } from "../../services/fetchContractTemplate";
 import { IconPlus } from "@tabler/icons-react";
 
-const createContractSchema = z.object({
-  title: z.string(),
-  templateId: z.string().nonempty().min(1, { message: "Выберите шаблон" }),
-});
+type Props = ContextModalProps<{
+  contractId: string;
+  title: string;
+  templateId: string;
+}>;
 
-export type CreateContractForm = z.infer<typeof createContractSchema>;
-
-type Props = ContextModalProps;
-
-export const CreateContractModal = ({ context, id }: Props) => {
+const UpdateContractModal = ({ context, id, innerProps: { contractId, templateId, title } }: Props) => {
+  const [updateContract] = useUpdateContract();
   const [template] = useFetchContractTemplates();
-  const [createContract] = useCreateContract();
-  const form = useForm<CreateContractForm>({
+  const form = useForm<UpdateContractForm>({
     initialValues: {
-      title: "",
-      templateId: ""
+      title: title,
+      templateId: templateId,
     },
-    validate: zodResolver(createContractSchema),
+    validate: zodResolver(updateContractSchema),
   });
 
-  const handleSubmit = (values: CreateContractForm) => {
-    createContract(values);
+  const handleSubmit = (values: UpdateContractForm) => {
     context.closeModal(id);
+    updateContract({
+      id: contractId,
+      updateContractDto: values,
+    });
   };
 
   const openCreateContractTemplateModal = () => {
@@ -81,5 +80,7 @@ export const CreateContractModal = ({ context, id }: Props) => {
         </Button>
       </div>
     </form>
-  );
-};
+  )
+}
+
+export default UpdateContractModal

@@ -7,8 +7,7 @@ type FetchContractsDto = {
 };
 
 export const fetchContracts = async (filters?: FetchContractsDto) => {
-  console.log(filters);
-  const { data } = await baseAxios.get<ContractEntity[]>(`/contract?name=${filters?.name}`);
+  const { data } = await baseAxios.get<ContractEntity[]>(`/contract?${filters?.name ? `name=${filters.name}` : ''}`);
   return data;
 };
 

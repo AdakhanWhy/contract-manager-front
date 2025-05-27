@@ -27,7 +27,6 @@ export const ContractStatusMenu = ({ contract }: { contract: ContractEntity }) =
       // classNames={ruleMenuClasses}
       opened={isOpenFirstMenu}
       onChange={setIsOpenFirstMenu}
-      width={172}
     >
       <Menu.Target>
         <Button>

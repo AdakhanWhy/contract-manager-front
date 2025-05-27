@@ -1,9 +1,11 @@
 import { CreateContractModal } from "./CreateContractModal";
 import { CreateContractTemplateModal } from "./CreateContractTemplateModal";
+import UpdateContractModal from "./UpdateContractModal";
 
 export const modals = {
   createContract: CreateContractModal,
-  createContractTemplate: CreateContractTemplateModal
+  createContractTemplate: CreateContractTemplateModal,
+  updateContract: UpdateContractModal,
 } as const;
 
 

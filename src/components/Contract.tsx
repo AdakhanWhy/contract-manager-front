@@ -7,13 +7,17 @@ import { useRef, useState, type RefObject } from "react";
 import { ContractTemplate } from "./ContractTemplate";
 import { ContractStatusMenu } from "./ContractStatusMenu";
 import { useNavigate } from "react-router-dom";
+import { useGetMe } from "../services/getMe";
 
 export const Contract = () => {
   const [search, setSearch] = useState<string | undefined>(undefined);
+  const [userId, setUserId] = useState<string | undefined>(undefined);
   const componentRef = useRef<HTMLDivElement>(null);
+  const [me] = useGetMe();
   const navigate = useNavigate();
   const [contracts] = useFetchContracts({
     name: search,
+    userId
   });
 
   const openCreateContractModal = () => {
@@ -42,6 +46,9 @@ export const Contract = () => {
           leftSection={<IconSearch size={16} />}
         />
         <Group>
+          <Button onClick={() => {
+            setUserId(userId === me?.id ? undefined : me?.id);
+          }}>Мои документы</Button>
           <Button onClick={openCreateContractModal}>Добавить документ</Button>
           <Button onClick={() => {
             localStorage.removeItem("accessToken");

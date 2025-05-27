@@ -1,4 +1,4 @@
-import { Button, TextInput } from "@mantine/core";
+import { Button, PasswordInput } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
 import { z } from "zod";
 import { PhoneInput } from "../PhoneInput";
@@ -37,7 +37,7 @@ export const LoginForm = ({ onSubmit }: Props) => {
           {...form.getInputProps("phone")}
           radius={12}
         />
-        <TextInput
+        <PasswordInput
           size="md"
           label="Пароль"
           placeholder="Введите пароль"

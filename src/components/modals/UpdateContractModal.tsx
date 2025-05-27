@@ -76,7 +76,7 @@ const UpdateContractModal = ({ context, id, innerProps: { contractId, templateId
           fullWidth
           type="submit"
         >
-          Создать
+          Сохранить
         </Button>
       </div>
     </form>

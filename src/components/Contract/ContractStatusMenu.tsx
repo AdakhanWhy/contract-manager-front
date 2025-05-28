@@ -1,8 +1,8 @@
 import { Button, Menu } from "@mantine/core";
-import type { ContractEntity } from "../types/entities/contract.entity";
+import type { ContractEntity } from "../../types/entities/contract.entity";
 import { useState } from "react";
-import { useUpdateContract } from "../services/updateContract";
-import { ContractStatusRu, type ContractStatus } from "../types/enums";
+import { useUpdateContract } from "../../services/updateContract";
+import { ContractStatusRu, type ContractStatus } from "../../types/enums";
 
 const statuses: { id: string; value: ContractStatus, label: string }[] = Object.entries(ContractStatusRu).map(([status, ru]) => ({
   id: status,

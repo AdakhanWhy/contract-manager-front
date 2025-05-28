@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Contract } from "./components/Contract";
+import { Contract } from "./components/Contract/Contract";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { LoginPage } from "./components/Login/LoginPage";
 

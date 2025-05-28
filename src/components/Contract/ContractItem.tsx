@@ -39,7 +39,6 @@ const ContractItem = ({ contract, componentRef }: Props) => {
               {contract.title}
             </Text>
           </Group>
-          <ContractStatusMenu contract={contract} />
           <ActionIcon variant="subtle" color="red" onClick={() => deleteContract(contract.id)}>
             <IconTrash size={14} />
           </ActionIcon>
@@ -54,13 +53,13 @@ const ContractItem = ({ contract, componentRef }: Props) => {
           </Text>
         </Stack>
 
-        <Group>
+        <Group justify="space-between">
+          <ContractStatusMenu contract={contract} />
           <Button
             size="xs"
             variant="light"
             onClick={handlePrint}
             radius="sm"
-            fullWidth
           >
             Печать
           </Button>

@@ -25,7 +25,7 @@ const ContractItem = ({ contract, componentRef }: Props) => {
   return (
     <Paper
       key={contract.id}
-      w={280}
+      w={480}
       h={200}
       p="sm"
       withBorder
@@ -39,6 +39,7 @@ const ContractItem = ({ contract, componentRef }: Props) => {
               {contract.title}
             </Text>
           </Group>
+          <ContractStatusMenu contract={contract} />
           <ActionIcon variant="subtle" color="red" onClick={() => deleteContract(contract.id)}>
             <IconTrash size={14} />
           </ActionIcon>
@@ -53,13 +54,13 @@ const ContractItem = ({ contract, componentRef }: Props) => {
           </Text>
         </Stack>
 
-        <Group justify="space-between">
-          <ContractStatusMenu contract={contract} />
+        <Group>
           <Button
             size="xs"
             variant="light"
             onClick={handlePrint}
             radius="sm"
+            fullWidth
           >
             Печать
           </Button>

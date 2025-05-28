@@ -25,8 +25,8 @@ export const LoginPage = () => {
   };
 
   return (
-    <Stack w="100%" h="100vh" align="center" justify="center" p="md" bg="gray.0" style={{
-      backgroundImage: 'url("https://static.vecteezy.com/system/resources/thumbnails/022/720/517/small_2x/abstract-background-with-smooth-lines-in-gray-colors-3d-illustration-photo.jpg")',
+    <Stack w="100%" h="100vh" align="center" justify="center" p="md" style={{
+      backgroundImage: 'url("public/bg-login.jpg")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     }}>

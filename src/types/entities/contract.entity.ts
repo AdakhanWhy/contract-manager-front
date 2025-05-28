@@ -5,7 +5,5 @@ export type ContractEntity = {
   title: string;
   templateId: string;
   status: ContractStatus;
-  startDate: Date;
-  endDate: Date;
   isSigned: boolean;
 };
